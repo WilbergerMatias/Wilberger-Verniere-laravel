@@ -70,7 +70,14 @@ class Pelicula extends Model
 
         $pelicula->nombre     = $request->Nombre;
         $pelicula->idGenero   = $request->idGenero;
-        $pelicula->imagen     = $request->imagen;
+        
+        if ($request->hasFile('Imagen_pelicula')){
+            $imagen = $request->file('Imagen_pelicula');
+            $extension = $imagen->getClientOriginalExtension();
+            $nombreArchivo = $pelicula->nombre.'.'.$extension;
+            $imagen->move("storage/peliculas/imagenes/",$nombreArchivo);
+            $pelicula->imagen_pelicula = $nombreArchivo;
+        }
         
         $pelicula->save();
     }
