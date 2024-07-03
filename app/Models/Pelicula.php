@@ -57,7 +57,12 @@ class Pelicula extends Model
             $imagen = $request->file('Imagen_pelicula');
             $extension = $imagen->getClientOriginalExtension();
             $nombreArchivo = $pelicula->nombre.'.'.$extension;
+
+            if (!file_exists(public_path('storage/peliculas/imagenes'))) {
+                mkdir(public_path('storage/peliculas/imagenes'), 0755, true);
+            }
             $imagen->move(public_path("storage/peliculas/imagenes"),$nombreArchivo);
+            
             $pelicula->imagen_pelicula = $nombreArchivo;
         }
         
@@ -75,7 +80,12 @@ class Pelicula extends Model
             $imagen = $request->file('Imagen_pelicula');
             $extension = $imagen->getClientOriginalExtension();
             $nombreArchivo = $pelicula->nombre.'.'.$extension;
+
+            if (!file_exists(public_path('storage/peliculas/imagenes'))) {
+                mkdir(public_path('storage/peliculas/imagenes'), 0755, true);
+            }
             $imagen->move(public_path("storage/peliculas/imagenes"),$nombreArchivo);
+
             $pelicula->imagen_pelicula = $nombreArchivo;
         }
         
