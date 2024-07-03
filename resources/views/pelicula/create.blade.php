@@ -35,7 +35,7 @@
             </div>
             <div class="form-group">
                     <label>Adjuntar Imagen:</label>
-                    <input type="file" name="Imagen_pelicula" id="img_pel" required>
+                    <input type="file" name="Imagen_pelicula" id="img_pel">
             </div>
         </div>
         <a class="btn btn-danger" href="{{ route('pelicula.index') }}">Back</a>
