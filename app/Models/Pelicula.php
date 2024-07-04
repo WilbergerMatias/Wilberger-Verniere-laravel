@@ -65,6 +65,7 @@ class Pelicula extends Model
 
             $pelicula->imagen_pelicula = $nombreArchivo;
         }
+        else { $pelicula->imagen_pelicula = null; }
         
         $pelicula->save();
     }
@@ -86,6 +87,7 @@ class Pelicula extends Model
 
             $pelicula->imagen_pelicula = $nombreArchivo;
         }
+        else { $pelicula->imagen_pelicula = null; }
         
         $pelicula->save();
     }
