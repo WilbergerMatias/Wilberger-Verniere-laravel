@@ -61,9 +61,9 @@ class Pelicula extends Model
 
             $nombreArchivo = Str::slug($request->Nombre).'.'.$extension;
 
-            $imagen->storeAs('public/peliculas/imagenes', $nombreArchivo);
+            $path = $imagen->storeAs('/peliculas/imagenes', $nombreArchivo, 'public');
 
-            $pelicula->imagen_pelicula = $nombreArchivo;
+            $pelicula->imagen_pelicula = $path;
         }
         else { $pelicula->imagen_pelicula = null; }
         
@@ -83,9 +83,9 @@ class Pelicula extends Model
 
             $nombreArchivo = Str::slug($request->Nombre).'.'.$extension;
 
-            $imagen->storeAs('public/peliculas/imagenes', $nombreArchivo);
+            $path = $imagen->storeAs('/peliculas/imagenes', $nombreArchivo, 'public');
 
-            $pelicula->imagen_pelicula = $nombreArchivo;
+            $pelicula->imagen_pelicula = $path;
         }
         else { $pelicula->imagen_pelicula = null; }
         

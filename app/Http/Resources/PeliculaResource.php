@@ -19,7 +19,7 @@ class PeliculaResource extends JsonResource
             'Id' => $this->id,
             'Nombre' => $this->nombre,
             'Genero' => $this->genero->nombre,
-            'Imagen' => $this->imagen_pelicula ? asset('storage/peliculas/imagenes/'.$this->imagen_pelicula) : null,
+            'Imagen' => $this->imagen_pelicula ? $this->imagen_pelicula : null,
         ];
     }
 }
