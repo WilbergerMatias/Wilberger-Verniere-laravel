@@ -64,8 +64,6 @@ class Pelicula extends Model
 
             //$path = $imagen->storeAs('/peliculas/imagenes', $nombreArchivo, 'public');
             $result = $imagen->storeOnCloudinaryAs('/peliculas/imagenes/', $nombreArchivo);
-            
-            console.log($result);
 
             $pelicula->imagen_pelicula = $result->getSecurePath();
         }
@@ -89,8 +87,6 @@ class Pelicula extends Model
 
             //$path = $imagen->storeAs('/peliculas/imagenes', $nombreArchivo, 'public');
             $result = $imagen->storeOnCloudinaryAs('/peliculas/imagenes/', $nombreArchivo);
-            
-            console.log($result);
 
             $pelicula->imagen_pelicula = $result->getSecurePath();
         }
