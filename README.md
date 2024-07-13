@@ -61,3 +61,4 @@ https://spatie.be/docs/laravel-permission/v6/introduction
 
 Administracion-de-archivos-> Imagenes
 https://laravel.com/docs/10.x/filesystem
+Usamos Cloudinary

@@ -62,9 +62,12 @@ class Pelicula extends Model
 
             $nombreArchivo = Str::slug($request->Nombre).'.'.$extension;
 
-            $path = $imagen->storeAs('/peliculas/imagenes', $nombreArchivo, 'public');
+            //$path = $imagen->storeAs('/peliculas/imagenes', $nombreArchivo, 'public');
+            $result = $imagen->storeOnCloudinaryAs('/peliculas/imagenes/', $nombreArchivo);
+            
+            console.log($result);
 
-            $pelicula->imagen_pelicula = $path;
+            $pelicula->imagen_pelicula = $result->getSecurePath();
         }
         else { $pelicula->imagen_pelicula = null; }
         
@@ -85,7 +88,7 @@ class Pelicula extends Model
             $nombreArchivo = Str::slug($request->Nombre).'.'.$extension;
 
             //$path = $imagen->storeAs('/peliculas/imagenes', $nombreArchivo, 'public');
-            $result = Cloudinary::upload('/peliculas/imagenes/'.$nombreArchivo)->getSecurePath();
+            $result = $imagen->storeOnCloudinaryAs('/peliculas/imagenes/', $nombreArchivo);
             
             console.log($result);
 
