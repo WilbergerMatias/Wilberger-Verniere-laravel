@@ -83,7 +83,8 @@ class Pelicula extends Model
             $imagen = $request->file('Imagen_pelicula');
             $extension = $imagen->getClientOriginalExtension();
 
-            $nombreArchivo = Str::slug($request->Nombre).'.'.$extension;
+            //$nombreArchivo = Str::slug($request->Nombre).'.'.$extension;
+            $nombreArchivo = Str::slug($request->Nombre);
 
             //$path = $imagen->storeAs('/peliculas/imagenes', $nombreArchivo, 'public');
             $result = $imagen->storeOnCloudinaryAs('/peliculas/imagenes/', $nombreArchivo);
