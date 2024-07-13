@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
   
 class Pelicula extends Model
@@ -83,9 +84,12 @@ class Pelicula extends Model
 
             $nombreArchivo = Str::slug($request->Nombre).'.'.$extension;
 
-            $path = $imagen->storeAs('/peliculas/imagenes', $nombreArchivo, 'public');
+            //$path = $imagen->storeAs('/peliculas/imagenes', $nombreArchivo, 'public');
+            $result = Cloudinary::upload('/peliculas/imagenes/'.$nombreArchivo)->getSecurePath();
+            
+            console.log($result);
 
-            $pelicula->imagen_pelicula = $path;
+            $pelicula->imagen_pelicula = $result->getSecurePath();
         }
         else { $pelicula->imagen_pelicula = null; }
         
