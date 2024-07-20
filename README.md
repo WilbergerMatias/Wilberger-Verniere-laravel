@@ -59,6 +59,9 @@ Nos faltaria reemplazar imagenes de Laravel por imagenes del logo de la empresa
 Roles-en-laravel -> Se agregaron roles que permiten solo modificar salas, solo modificar funciones, o solo modificar peliculas y generos. Todos pueden ver la lista de peliculas,generos,funciones y salas. Solo el superadmin puede ver compras y ordenes de compra asociadas a cada una. Se uso SPATIE/laravel-permissions. 
 https://spatie.be/docs/laravel-permission/v6/introduction
 
-Administracion-de-archivos-> Imagenes
+## Administracion-de-archivos-> Imagenes
 https://laravel.com/docs/10.x/filesystem
 Usamos Cloudinary
+
+## API-Mercado-Pago
+Usamos variables globales para observaciones inputadas en carrito de compras.
