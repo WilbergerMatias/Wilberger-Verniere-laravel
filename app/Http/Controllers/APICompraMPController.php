@@ -8,7 +8,6 @@ use MercadoPago\Client\Payment\PaymentClient;
 use MercadoPago\Client\Common\RequestOptions;
 use MercadoPago\SDK;
 
-
 class APICompraMPController extends Controller
 {
     public function compraMercadoPago(Request $request)
