@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string("nombre",40);
             $table->boolean("habilitado")->default('true');
+            $table->string("imagen_pelicula")->nullable();
 
             $table->foreignId("idGenero")->references("id")->on("genero");        
 

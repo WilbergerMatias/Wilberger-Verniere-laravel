@@ -9,6 +9,9 @@ use App\Models\Funcion;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
   
 class Pelicula extends Model
@@ -17,7 +20,8 @@ class Pelicula extends Model
     protected $table = 'pelicula';
     protected $fillable = [
         'idGenero',
-        'nombre'
+        'nombre',
+        'imagen_pelicula',
     ];
 
     public function genero():HasOne{
@@ -51,9 +55,21 @@ class Pelicula extends Model
 
         $pelicula->nombre     = $request->Nombre;
         $pelicula->idGenero   = $request->Genero;
+
+        if ($request->hasFile('Imagen_pelicula')){
+            $imagen = $request->file('Imagen_pelicula');
+            $extension = $imagen->getClientOriginalExtension();
+
+            $nombreArchivo = Str::slug($request->Nombre).'.'.$extension;
+
+            //$path = $imagen->storeAs('/peliculas/imagenes', $nombreArchivo, 'public');
+            $result = $imagen->storeOnCloudinaryAs('/peliculas/imagenes/', $nombreArchivo);
+
+            $pelicula->imagen_pelicula = $result->getSecurePath();
+        }
+        else { $pelicula->imagen_pelicula = null; }
         
         $pelicula->save();
-
     }
 
     public static function editarPelicula(Request $request, $id)
@@ -62,6 +78,20 @@ class Pelicula extends Model
 
         $pelicula->nombre     = $request->Nombre;
         $pelicula->idGenero   = $request->idGenero;
+        
+        if ($request->hasFile('Imagen_pelicula')){
+            $imagen = $request->file('Imagen_pelicula');
+            $extension = $imagen->getClientOriginalExtension();
+
+            //$nombreArchivo = Str::slug($request->Nombre).'.'.$extension;
+            $nombreArchivo = Str::slug($request->Nombre);
+
+            //$path = $imagen->storeAs('/peliculas/imagenes', $nombreArchivo, 'public');
+            $result = $imagen->storeOnCloudinaryAs('/peliculas/imagenes/', $nombreArchivo);
+
+            $pelicula->imagen_pelicula = $result->getSecurePath();
+        }
+        else { $pelicula->imagen_pelicula = null; }
         
         $pelicula->save();
     }

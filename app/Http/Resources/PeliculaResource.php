@@ -18,7 +18,8 @@ class PeliculaResource extends JsonResource
         return [
             'Id' => $this->id,
             'Nombre' => $this->nombre,
-            'Genero' => $this->genero->nombre
+            'Genero' => $this->genero->nombre,
+            'Imagen' => $this->imagen_pelicula ? $this->imagen_pelicula : null,
         ];
     }
 }

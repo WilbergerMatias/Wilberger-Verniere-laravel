@@ -12,7 +12,7 @@ class PeliculaController extends Controller
     {
         $this->middleware('can:pelicula.index')->only('index');
         $this->middleware('can:pelicula.create')->only('create');
-        $this->middleware('can:pelicula.show')->only('show');
+        $this->middleware('can:pelicula.showImage')->only('show');
         $this->middleware('can:pelicula.edit')->only('edit');
         $this->middleware('can:pelicula.habilitar')->only('habilitar');
         $this->middleware('can:pelicula.deshabilitar')->only('deshabilitar');
@@ -55,11 +55,12 @@ class PeliculaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Pelicula $pelicula)
+    public function show(Request $request)
     {
-        //
+        $id=$request->Pelicula;
+        $pelicula = Pelicula::find($id);
+        return view('pelicula.show', compact('pelicula'));
     }
-
     /**
      * Show the form for editing the specified resource.
      */

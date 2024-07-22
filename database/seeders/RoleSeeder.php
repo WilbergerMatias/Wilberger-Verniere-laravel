@@ -49,9 +49,11 @@ class RoleSeeder extends Seeder
 
         $peliculaIndex = Permission::create(['name' => 'pelicula.index']); // Permiso para listar peliculas
         $peliculaCreate = Permission::create(['name' => 'pelicula.create']); // Permiso para ver la ventana de creacion de una pelicula
+        $peliculaShowImage = Permission::create(['name' => 'pelicula.showImage']); // Permiso para ver la portada de una pelicula
         $peliculaEdit = Permission::create(['name' => 'pelicula.edit']); // Permiso para ver la ventana de modificacion de una pelicula
         $peliculaHabilitar = Permission::create(['name' => 'pelicula.habilitar']); // Permiso para habilitar una pelicula
         $peliculaDeshabilitar = Permission::create(['name' => 'pelicula.deshabilitar']); // Permiso para deshabilitar una pelicula
+        
         
         $ordenIndex = Permission::create(['name' => 'orden.index']); // Permiso para listar ordenes
         //$ordenCreate = Permission::create(['name' => 'orden.create']); // Permiso para ver la ventana de creacion de una orden 
@@ -64,7 +66,7 @@ class RoleSeeder extends Seeder
         $superadmin->syncPermissions(
             $funcionIndex, $funcionCreate, $funcionEdit, $funcionHabilitar, $funcionDeshabilitar,
             $salaIndex, $salaCreate, $salaEdit, $salaHabilitar, $salaDeshabilitar,
-            $peliculaIndex, $peliculaCreate, $peliculaEdit, $peliculaHabilitar, $peliculaDeshabilitar,
+            $peliculaIndex, $peliculaCreate, $peliculaShowImage,  $peliculaEdit, $peliculaHabilitar, $peliculaDeshabilitar,
             $generoIndex, $generoCreate, $generoEdit, $generoHabilitar, $generoDeshabilitar,
             $compraIndex,
             $ordenIndex,
@@ -73,21 +75,21 @@ class RoleSeeder extends Seeder
         $adminFunciones->syncPermissions(
             $funcionIndex, $funcionCreate, $funcionEdit, $funcionHabilitar, $funcionDeshabilitar,
             $salaIndex,
-            $peliculaIndex,
+            $peliculaIndex, $peliculaShowImage,
             $generoIndex,
         );
 
         $adminSalas->syncPermissions(
             $funcionIndex,
             $salaIndex, $salaCreate, $salaEdit, $salaHabilitar, $salaDeshabilitar,
-            $peliculaIndex,
+            $peliculaIndex, $peliculaShowImage,
             $generoIndex,
         );
 
         $adminGenerosPeliculas->syncPermissions(
             $funcionIndex,
             $salaIndex,
-            $peliculaIndex, $peliculaCreate, $peliculaEdit, $peliculaHabilitar, $peliculaDeshabilitar,
+            $peliculaIndex, $peliculaCreate, $peliculaShowImage, $peliculaEdit, $peliculaHabilitar, $peliculaDeshabilitar,
             $generoIndex, $generoCreate, $generoEdit, $generoHabilitar, $generoDeshabilitar,
         );
     }

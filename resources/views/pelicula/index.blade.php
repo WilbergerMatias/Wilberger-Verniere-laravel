@@ -58,6 +58,14 @@
                             <button type="submit" class="btn btn-secondary">Editar</button>
                         </form>
                         @endcan
+                        @can('pelicula.showImage')
+                        <form action="{{ route('pelicula.show',$pel->id) }}" method="Post">
+                            @csrf
+                            @method('GET')
+                            <input type="hidden" name="Pelicula" value="{{ $pel->id }}">
+                            <button type="submit" class="btn btn-secondary">Ver portada</button>
+                        </form>
+                        @endcan
                     </td>
                 </tr>
             @endforeach

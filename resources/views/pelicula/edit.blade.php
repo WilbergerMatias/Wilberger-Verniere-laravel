@@ -34,6 +34,10 @@
                     @endforeach
                 </select>
             </div>
+            <div class="form-group">
+                    <label>Adjuntar Imagen:</label>
+                    <input type="file" name="Imagen_pelicula" id="img_pel">
+            </div>
         </div>
         <a class="btn btn-danger" href="{{ route('pelicula.index') }}">Back</a>
         <button type="submit" class="btn btn-primary">Submit</button>

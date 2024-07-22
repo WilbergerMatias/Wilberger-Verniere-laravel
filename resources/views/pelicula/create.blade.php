@@ -26,13 +26,17 @@
                 </div>
             </div>
             <div class="form-group">
-            <label>Genero:</label>
-            <select name="Genero" id="gen" placeholder="Elija una opcion" required>
-                @foreach ($generos as $gen)
-                    <option value="{{$gen->id}}"> {{ $gen->nombre }} </option>
-                @endforeach
-            </select>
-        </div>
+                <label>Genero:</label>
+                <select name="Genero" id="gen" placeholder="Elija una opcion" required>
+                    @foreach ($generos as $gen)
+                        <option value="{{$gen->id}}"> {{ $gen->nombre }} </option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="form-group">
+                    <label>Adjuntar Imagen:</label>
+                    <input type="file" name="Imagen_pelicula" id="img_pel">
+            </div>
         </div>
         <a class="btn btn-danger" href="{{ route('pelicula.index') }}">Back</a>
         <button type="submit" class="btn btn-primary">Submit</button>
