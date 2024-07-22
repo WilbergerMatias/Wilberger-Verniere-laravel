@@ -8,6 +8,16 @@ use App\Models\Genero;
 
 class PeliculaController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:pelicula.index')->only('index');
+        $this->middleware('can:pelicula.create')->only('create');
+        $this->middleware('can:pelicula.show')->only('show');
+        $this->middleware('can:pelicula.edit')->only('edit');
+        $this->middleware('can:pelicula.habilitar')->only('habilitar');
+        $this->middleware('can:pelicula.deshabilitar')->only('deshabilitar');
+    }
+
     /**
      * Display a listing of the resource.
      */

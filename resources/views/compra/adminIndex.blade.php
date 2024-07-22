@@ -28,7 +28,9 @@
                     <td>
                         <form action="{{ route('detallesCompra.ordenesAsociadas', $com->id) }}" method="get">
                             @csrf
+                            @can('orden.index')
                             <button type="submit" class="btn btn-primary">Ver ordenes</button>
+                            @endcan
                         </form>
                     </td>
                 </tr>

@@ -38,27 +38,32 @@
                     </td>
                     <td>
                         @if($fun->habilitado)
+                            @can('funcion.deshabilitar')
                             <form action="{{ route('funcion.deshabilitar',$fun->id) }}" method="Post">
                                 @csrf
                                 @method('DELETE')
                                 <input type="hidden" name="Funcion" value="{{ $fun->id }}">
                                 <button type="submit" class="btn btn-danger">Deshabilitar</button>
                             </form>
+                            @endcan
                         @else
+                            @can('funcion.habilitar')
                             <form action="{{ route('funcion.habilitar',$fun->id) }}" method="Post">
                                 @csrf
                                 @method('PUT')
                                 <input type="hidden" name="Funcion" value="{{ $fun->id }}">
                                 <button type="submit" class="btn btn-primary">Habilitar</button>
                             </form>
+                            @endcan
                         @endif
-
+                        @can('funcion.edit')
                         <form action="{{ route('funcion.edit',$fun->id) }}" method="Post">
                             @csrf
                             @method('GET')
                             <input type="hidden" name="Funcion" value="{{ $fun->id }}">
                             <button type="submit" class="btn btn-secondary">Editar</button>
                         </form>
+                        @endcan
                     </td>
                 </tr>
             @endforeach

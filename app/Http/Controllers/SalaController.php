@@ -7,6 +7,16 @@ use App\Models\Sala;
 
 class SalaController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:sala.index')->only('index');
+        $this->middleware('can:sala.create')->only('create');
+        $this->middleware('can:sala.show')->only('show');
+        $this->middleware('can:sala.edit')->only('edit');
+        $this->middleware('can:sala.habilitar')->only('habilitar');
+        $this->middleware('can:sala.deshabilitar')->only('deshabilitar');
+    }
+
     /**
      * Display a listing of the resource.
      */

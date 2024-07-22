@@ -30,27 +30,32 @@
                     </td>
                     <td>
                         @if($gen->habilitado)
+                            @can('genero.deshabilitar')
                             <form action="{{ route('genero.deshabilitar',$gen->id) }}" method="Post">
                                 @csrf
                                 @method('DELETE')
                                 <input type="hidden" name="Genero" value="{{ $gen->id }}">
                                 <button type="submit" class="btn btn-danger">Deshabilitar</button>
                             </form>
+                            @endcan
                         @else
+                            @can('genero.habilitar')
                             <form action="{{ route('genero.habilitar',$gen->id) }}" method="Post">
                                 @csrf
                                 @method('PUT')
                                 <input type="hidden" name="Genero" value="{{ $gen->id }}">
                                 <button type="submit" class="btn btn-primary">Habilitar</button>
                             </form>
+                            @endcan
                         @endif
-
+                        @can('genero.edit')
                         <form action="{{ route('genero.edit',$gen->id) }}" method="Post">
                             @csrf
                             @method('GET')
                             <input type="hidden" name="Genero" value="{{ $gen->id }}">
                             <button type="submit" class="btn btn-secondary">Editar</button>
                         </form>
+                        @endcan
                     </td>
                 </tr>
             @endforeach

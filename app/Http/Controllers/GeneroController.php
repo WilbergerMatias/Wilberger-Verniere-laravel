@@ -7,6 +7,16 @@ use App\Models\Genero;
 
 class GeneroController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:genero.index')->only('index');
+        $this->middleware('can:genero.create')->only('create');
+        $this->middleware('can:genero.show')->only('show');
+        $this->middleware('can:genero.edit')->only('edit');
+        $this->middleware('can:genero.habilitar')->only('habilitar');
+        $this->middleware('can:genero.deshabilitar')->only('deshabilitar');
+    }
+
     /**
      * Display a listing of the resource.
      */

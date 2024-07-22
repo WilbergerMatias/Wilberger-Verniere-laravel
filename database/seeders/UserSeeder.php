@@ -15,12 +15,33 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        //
-        DB::table('users')->insert([
-            'name' => "admin",
+        User::truncate();
+        User::create([
+            'name' => "Admin",
             'email'=>"admin@iaw.com",            
             'password'=>Hash::make('admin123'),
             'rol'=>"SUPER_ADMIN",
-        ]);
+        ])->assignRole('superadmin');
+
+        User::create([
+            'name' => "FuncionAdmin",
+            'email'=>"funcionAdmin@iaw.com",            
+            'password'=>Hash::make('admin234'),
+            'rol'=>"ADMIN",
+        ])->assignRole('adminFunc');
+
+        User::create([
+            'name' => "SalaAdmin",
+            'email'=>"salaAdmin@iaw.com",            
+            'password'=>Hash::make('admin456'),
+            'rol'=>"ADMIN",
+        ])->assignRole('adminSala');
+
+        User::create([
+            'name' => "GenyPelAdmin",
+            'email'=>"generoypeliculaAdmin@iaw.com",            
+            'password'=>Hash::make('admin567'),
+            'rol'=>"ADMIN",
+        ])->assignRole('adminGyP');
     }
 }

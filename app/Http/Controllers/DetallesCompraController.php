@@ -8,6 +8,11 @@ use App\Models\Funcion;
 
 class DetallesCompraController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:orden.index')->only('ordenesAsociadas');
+    }
+
     /**
      * Display a listing of the resource.
      */

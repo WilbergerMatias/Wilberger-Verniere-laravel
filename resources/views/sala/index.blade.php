@@ -32,26 +32,32 @@
                     </td>
                     <td>      
                         @if($s->habilitado)
+                            @can('sala.deshabilitar')
                             <form action="{{ route('sala.deshabilitar',$s->id) }}" method="Post">
                                 @csrf
                                 @method('DELETE')
                                 <input type="hidden" name="Sala" value="{{ $s->id }}">
                                 <button type="submit" class="btn btn-danger">Deshabilitar</button>
                             </form>
+                            @endcan  
                         @else
+                            @can('sala.habilitar')
                             <form action="{{ route('sala.habilitar',$s->id) }}" method="Post">
                                 @csrf
                                 @method('PUT')
                                 <input type="hidden" name="Sala" value="{{ $s->id }}">
                                 <button type="submit" class="btn btn-primary">Habilitar</button>
                             </form>
+                            @endcan
                         @endif
+                        @can('sala.edit')
                         <form action="{{ route('sala.edit',$s->id) }}" method="Post">
                             @csrf
                             @method('GET')
                             <input type="hidden" name="Sala" value="{{ $s->id }}">
                             <button type="submit" class="btn btn-secondary">Editar</button>
                         </form>
+                        @endcan
                     </td>
                 </tr>
             @endforeach

@@ -9,6 +9,11 @@ use App\Http\DetallesCompraController;
 
 class CompraController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:compra.index')->only('index');
+    }
+
     /**
      * Display a listing of the resource.
      */

@@ -145,6 +145,13 @@
     bottom: 20px;
 }
 
+.username{
+    position: absolute;
+    display: inline-block;
+    padding: 10px 24px;
+    bottom: 65px;  
+}
+
 .form-group{
     margin-bottom: 25px;
 }

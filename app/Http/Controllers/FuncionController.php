@@ -11,6 +11,16 @@ use Illuminate\Support\Facades\DB;
 
 class FuncionController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:funcion.index')->only('index');
+        $this->middleware('can:funcion.create')->only('create');
+        $this->middleware('can:funcion.show')->only('show');
+        $this->middleware('can:funcion.edit')->only('edit');
+        $this->middleware('can:funcion.habilitar')->only('habilitar');
+        $this->middleware('can:funcion.deshabilitar')->only('deshabilitar');
+    }
+
     /**
      * Display a listing of the resource.
      */
