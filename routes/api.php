@@ -42,6 +42,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::delete('/compras/eliminar', [APICompraController::class, 'destroy']);
 
     Route::get('/detallesCompras/{idDetallesCompra}', [APIDetallesCompraController::class, 'show']);
+
+    Route::post('/process_payment', [APICompraMPController::class, 'compraMercadoPago']);
 });
 
 Route::post('/login', [AuthControllerApi::class, 'login']);
@@ -58,5 +60,3 @@ Route::get('/peliculas/{idPelicula}', [APIPeliculaController::class, 'show']);
 Route::get('/funciones', [APIFuncionController::class, 'index']);
 Route::get('/funciones/asociadas', [APIFuncionController::class, 'indexWithPelicula']);
 Route::get('/funciones/{idFuncion}', [APIFuncionController::class, 'show']);
-
-Route::post('/process_payment', [APICompraMPController::class, 'compraMercadoPago']);
