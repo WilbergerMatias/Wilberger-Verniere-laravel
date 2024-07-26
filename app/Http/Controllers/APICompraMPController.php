@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use MercadoPago\Client\Payment\PaymentClient;
 use MercadoPago\Client\Common\RequestOptions;
 use MercadoPago\SDK;
+use Exception;
 
 class APICompraMPController extends Controller
 {
@@ -16,7 +17,7 @@ class APICompraMPController extends Controller
 
         $client = new PaymentClient();
         $request_options = new RequestOptions();
-        $request_options->setCustomHeaders(["X-Idempotency-Key: <SOME_UNIQUE_VALUE>"]);
+        $request_options->setCustomHeaders(["X-Idempotency-Key: " . uniqid()]);
       
         $body = $request->json()->all();
 
