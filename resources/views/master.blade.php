@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         @vite(['resources/css/master.css'])
 
-
+        @yield('css')
         <title>WebCines</title>
     </head>
 
