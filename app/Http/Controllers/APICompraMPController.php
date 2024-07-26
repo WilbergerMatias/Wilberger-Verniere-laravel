@@ -23,17 +23,17 @@ class APICompraMPController extends Controller
         try {
             // Create the payment
             $payment = $client->create([
-                "transaction_amount" => (float) $_POST[$body->transaction_amount], //<TRANSACTION_AMOUNT>
-                "token" => $_POST[$body->token], //<TOKEN>
-                "description" => $_POST['<DESCRIPTION>'], //<DESCRIPTION>
-                "installments" => $_POST[$body->installments], //<INSTALLMENTS>
-                "payment_method_id" => $_POST[$body->payment_method_id], //<PAYMENT_METHOD_ID>
-                "issuer_id" => $_POST[$body->issuer_id], //<ISSUER>
+                "transaction_amount" => (float) $body['transaction_amount'], //<TRANSACTION_AMOUNT>
+                "token" => $body['token'], //<TOKEN>
+                "description" => $body['description'], //<DESCRIPTION>
+                "installments" => $body['installments'], //<INSTALLMENTS>
+                "payment_method_id" => $body['payment_method_id'], //<PAYMENT_METHOD_ID>
+                "issuer_id" => $body['issuer_id'], //<ISSUER>
                 "payer" => [
-                    "email" => $_POST[$body->payer->email], //<EMAIL>
+                    "email" => $body['payer']['email'], //<EMAIL>
                     "identification" => [
-                    "type" => $_POST[$body->payer->identification->type], //<IDENTIFICATION_TYPE
-                    "number" => $_POST[$body->payer->identification->numer] //<NUMBER>
+                        "type" => $body['payer']['identification']['type'], //<IDENTIFICATION_TYPE
+                        "number" => $body['payer']['identification']['number'] //<NUMBER>
                     ]
                 ]
             ], $request_options);
