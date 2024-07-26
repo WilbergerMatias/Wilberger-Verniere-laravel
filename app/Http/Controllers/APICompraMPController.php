@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+require_once 'vendor/autoload.php';
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use MercadoPago\Client\Payment\PaymentClient;
