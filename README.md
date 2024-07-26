@@ -62,3 +62,10 @@ https://spatie.be/docs/laravel-permission/v6/introduction
 ## Administracion-de-archivos-> Imagenes
 https://laravel.com/docs/10.x/filesystem
 Usamos Cloudinary
+
+## Servicio-web-laravel:
+Se utiliza API de OMDb para autocompletar formulario de creacion de pelicula
+Se utilizo JavaScript
+Si no encuentra pelicula tira alert
+Si encuentra pelicula pero no tiene genero existente en la base de datos actual muestra notificacion
+Si no encuentra poster no hace nada, si lo hace setea un link para descargarlo y lo muestra como preview
