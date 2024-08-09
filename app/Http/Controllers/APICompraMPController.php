@@ -12,7 +12,7 @@ class APICompraMPController extends Controller
 {
     public function compraMercadoPago(Request $request)
     {  
-        MMercadoPago\SDK::setAccessToken(env('MERCADOPAGO_API_ACCESS_TOKEN'));
+        MercadoPago\SDK::setAccessToken(env('MERCADOPAGO_API_ACCESS_TOKEN'));
 
         $client = new PaymentClient();
         $request_options = new RequestOptions();
