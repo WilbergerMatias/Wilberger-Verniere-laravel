@@ -6,14 +6,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use MercadoPago\Client\Payment\PaymentClient;
 use MercadoPago\Client\Common\RequestOptions;
-use MercadoPago\MercadoPagoConfig;
 use Exception;
 
 class APICompraMPController extends Controller
 {
     public function compraMercadoPago(Request $request)
     {  
-        MercadoPagoConfig::setAccessToken(env('MERCADOPAGO_API_ACCESS_TOKEN'));
+        MMercadoPago\SDK::setAccessToken(env('MERCADOPAGO_API_ACCESS_TOKEN'));
 
         $client = new PaymentClient();
         $request_options = new RequestOptions();
