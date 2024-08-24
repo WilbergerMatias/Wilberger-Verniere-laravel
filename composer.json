@@ -12,6 +12,7 @@
         "laravel/sanctum": "^3.2",
         "laravel/tinker": "^2.8",
         "league/flysystem": "^3.28",
+        "mercadopago/dx-php": "3.0.7",
         "spatie/laravel-permission": "*",
         "xylis/faker-cinema-providers": "^2.0"
     },

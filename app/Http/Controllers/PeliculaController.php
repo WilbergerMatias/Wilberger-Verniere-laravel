@@ -34,7 +34,9 @@ class PeliculaController extends Controller
     public function create()
     {
         $generos = Genero::where('habilitado',true)->get();
-        return view('pelicula.create', compact('generos'));
+        $apiKey = env('OPEN_MOVIE_DATABASE_API_KEY');
+
+        return view('pelicula.create', compact('generos','apiKey'));
     }
 
     /**

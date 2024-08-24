@@ -8,6 +8,9 @@ use App\Http\Controllers\APIFuncionController;
 use App\Http\Controllers\APIGeneroController;
 use App\Http\Controllers\APIPeliculaController;
 use App\Http\Controllers\APIUsuarioController;
+use App\Http\Controllers\APICompraMPController;
+use App\Http\Controllers\APIOpenAIController;
+use App\Http\Controllers\APIOpenMovieDBController;
 use App\Http\Controllers\Auth\AuthControllerApi;
 
 /*
@@ -41,6 +44,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::delete('/compras/eliminar', [APICompraController::class, 'destroy']);
 
     Route::get('/detallesCompras/{idDetallesCompra}', [APIDetallesCompraController::class, 'show']);
+
+    Route::post('/process_payment', [APICompraMPController::class, 'compraMercadoPago']);
 });
 
 Route::post('/login', [AuthControllerApi::class, 'login']);
@@ -58,3 +63,5 @@ Route::get('/funciones', [APIFuncionController::class, 'index']);
 Route::get('/funciones/asociadas', [APIFuncionController::class, 'indexWithPelicula']);
 Route::get('/funciones/{idFuncion}', [APIFuncionController::class, 'show']);
 
+Route::get('/chatgpt', [APIOpenAIController::class, 'infoChatGPT']);
+Route::get('/openmovie', [APIOpenMovieDBController::class, 'infoOMDb']);
