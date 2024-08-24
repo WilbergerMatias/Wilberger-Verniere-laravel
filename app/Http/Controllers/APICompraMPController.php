@@ -25,7 +25,7 @@ class APICompraMPController extends Controller
         Log::info('Body: ', $body);
 
         Log::info('Transaction Amount: ' . $request->json('transaction_amount'));
-        Log::info('Transaction Amount: ' . $body['transaction_amount']);
+        Log::info('Transaction Amount: ' . $body['transaction_amount']); 
 
         try {
             // Create the payment
