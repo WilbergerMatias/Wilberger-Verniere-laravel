@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use MercadoPago\Client\Common\RequestOptions;
 use MercadoPago\Client\Payment\PaymentClient;
 use MercadoPago\MercadoPagoConfig;
+use Illuminate\Support\Facades\Log;
 use Exception;
 
 class APICompraMPController extends Controller
