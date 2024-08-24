@@ -19,8 +19,13 @@ class APICompraMPController extends Controller
         $client = new PaymentClient();
         $request_options = new RequestOptions();
         $request_options->setCustomHeaders(["X-Idempotency-Key: " . uniqid()]);
-      
+
+        Log::info('Raw request body: ' . $request->getContent());
         $body = $request->json()->all();
+        Log::info('Body: ', $body);
+
+        Log::info('Transaction Amount: ' . $request->json('transaction_amount'));
+        Log::info('Transaction Amount: ' . $body['transaction_amount']);
 
         try {
             // Create the payment
@@ -47,12 +52,7 @@ class APICompraMPController extends Controller
             Log::error('Payment processing error: ' . $e->getMessage());
             
             // Return an error response
-            return response()->json(
-                [
-                    'error' => 'Payment processing failed', 
-                    'message' => $e->getMessage(),
-                    'JSON creado' => $body,
-                ], 500);
+            return response()->json(['error' => 'Payment processing failed','message' => $e->getMessage()], 500);
         }
     }
 }
