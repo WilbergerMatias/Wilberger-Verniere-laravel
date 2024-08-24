@@ -31,7 +31,7 @@ class APICompraMPController extends Controller
             $payment = $client->create([
                 "transaction_amount" => (float) $body['transaction_amount'], //<TRANSACTION_AMOUNT>
                 "token" => $body['token'], //<TOKEN>
-                "description" => $body['description'], //<DESCRIPTION>
+                "description" => "COMPRA_TICKET_MP", //<DESCRIPTION>
                 "installments" => $body['installments'], //<INSTALLMENTS>
                 "payment_method_id" => $body['payment_method_id'], //<PAYMENT_METHOD_ID>
                 "issuer_id" => $body['issuer_id'], //<ISSUER>
