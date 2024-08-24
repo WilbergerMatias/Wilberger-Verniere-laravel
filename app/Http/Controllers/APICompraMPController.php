@@ -47,7 +47,12 @@ class APICompraMPController extends Controller
             Log::error('Payment processing error: ' . $e->getMessage());
             
             // Return an error response
-            return response()->json(['error' => 'Payment processing failed', 'message' => $e->getMessage()], 500);
+            return response()->json(
+                [
+                    'error' => 'Payment processing failed', 
+                    'message' => $e->getMessage(),
+                    'JSON creado' => $body,
+                ], 500);
         }
     }
 }
