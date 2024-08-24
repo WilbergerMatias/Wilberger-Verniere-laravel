@@ -20,12 +20,11 @@ class APICompraMPController extends Controller
         $request_options = new RequestOptions();
         $request_options->setCustomHeaders(["X-Idempotency-Key: " . uniqid()]);
 
-        Log::info('Raw request body: ' . $request->getContent());
-        $body = $request->json()->all();
-        Log::info('Body: ', $body);
+        $bodyString = $request->json('body');
+        Log::info('Body string: ' . $bodyString);
 
-        Log::info('Transaction Amount: ' . $request->json('transaction_amount'));
-        Log::info('Transaction Amount: ' . $body['transaction_amount']); 
+        $body = json_decode($bodyString, true);
+        Log::info('Decoded body: ', $body);
 
         try {
             // Create the payment
