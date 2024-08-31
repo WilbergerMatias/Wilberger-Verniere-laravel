@@ -39,6 +39,9 @@
         }
     },
     "scripts": {
+        "post-install-cmd": [
+            "composer require mercadopago/dx-php:3.0.7"
+        ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi"
