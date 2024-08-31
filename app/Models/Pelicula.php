@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
+use Illuminate\Support\Facades\Log;
 
   
 class Pelicula extends Model
@@ -60,10 +61,10 @@ class Pelicula extends Model
             $imagen = $request->file('Imagen_pelicula');
             $extension = $imagen->getClientOriginalExtension();
 
-            $nombreArchivo = Str::slug($request->Nombre).'.'.$extension;
-
+            $nombreArchivo = Str::slug($request->Nombre).'.'.$extension; Log::info("Nombre de archivo: " . $nombreArchivo);
+            
             //$path = $imagen->storeAs('/peliculas/imagenes', $nombreArchivo, 'public');
-            $result = $imagen->storeOnCloudinaryAs('/peliculas/imagenes/', $nombreArchivo);
+            $result = $imagen->storeOnCloudinaryAs('/peliculas/imagenes/', $nombreArchivo); Log::info("Nombre de result: " . $result);
 
             $pelicula->imagen_pelicula = $result->getSecurePath();
         }
@@ -80,14 +81,14 @@ class Pelicula extends Model
         $pelicula->idGenero   = $request->idGenero;
         
         if ($request->hasFile('Imagen_pelicula')){
-            $imagen = $request->file('Imagen_pelicula');
+            $imagen = $request->file('Imagen_pelicula'); 
             $extension = $imagen->getClientOriginalExtension();
 
-            //$nombreArchivo = Str::slug($request->Nombre).'.'.$extension;
-            $nombreArchivo = Str::slug($request->Nombre);
+            $nombreArchivo = Str::slug($request->Nombre).'.'.$extension;  Log::info("Nombre de archivo: " . $nombreArchivo);
+            //$nombreArchivo = Str::slug($request->Nombre);
 
             //$path = $imagen->storeAs('/peliculas/imagenes', $nombreArchivo, 'public');
-            $result = $imagen->storeOnCloudinaryAs('/peliculas/imagenes/', $nombreArchivo);
+            $result = $imagen->storeOnCloudinaryAs('/peliculas/imagenes/', $nombreArchivo); Log::info("Nombre de result: " . $result);
 
             $pelicula->imagen_pelicula = $result->getSecurePath();
         }
