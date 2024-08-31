@@ -71,7 +71,8 @@ class PeliculaController extends Controller
         $id=$request->Pelicula;
         $pelicula = Pelicula::find($id);
         $generos = Genero::where('habilitado',true)->get();
-        return view('pelicula.edit',compact('pelicula','id','generos'));
+        $apiKey = env('OPEN_MOVIE_DATABASE_API_KEY');
+        return view('pelicula.edit',compact('pelicula','id','generos','apiKey'));
     }
 
     /**

@@ -21,7 +21,7 @@
                     <strong>Nombre:</strong>
                     <div class="input-group">
                         <input type="text" id="nombrePelicula" name="Nombre" class="form-control" placeholder="Ej: Star Wars" required>
-                        <button type="button" id="fillFormBtn" class="btn btn-secondary">LLenar formulario</button>
+                        <button type="button" id="fillFormBtn" class="btn btn-secondary">Llenar formulario</button>
                     </div>
                     @error('Nombre')
                     <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
