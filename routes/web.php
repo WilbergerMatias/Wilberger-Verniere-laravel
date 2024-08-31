@@ -72,7 +72,9 @@ Route::middleware('auth')->group(function () {
         ->name('detallesCompra.ordenesAsociadas');   
 });
 
-
+Route::get('/mp-check-version', function () {
+    return 'MercadoPago version: ' . \Composer\InstalledVersions::getVersion('mercadopago/dx-php');
+});
 
 Route::view('/swagger', 'swagger');
 
